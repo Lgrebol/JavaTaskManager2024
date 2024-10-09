@@ -26,4 +26,48 @@ public class Main {
                     tasks.add(new Task(description));
                     System.out.println("Tasca afegida!");
                     break;
-            }}}}
+
+                case 2:
+                    // Membre 2: Marcar una tasca com a completada
+                    if (tasks.isEmpty()) {
+                        System.out.println("No hi ha tasques per completar.");
+                        break;
+                    }
+
+                    System.out.println("Selecciona el número de la tasca a marcar com a completada:");
+                    for (int i = 0; i < tasks.size(); i++) {
+                        System.out.println((i + 1) + ". " + tasks.get(i).getDescription());
+                    }
+                    int taskIndex = scanner.nextInt() - 1;
+                    if (taskIndex >= 0 && taskIndex < tasks.size()) {
+                        tasks.get(taskIndex).setCompleted(true);
+                        System.out.println("Tasca marcada com a completada!");
+                    } else {
+                        System.out.println("Número de tasca no vàlid.");
+                    }
+                    break;
+
+                case 3:
+                    // Membre 2: Mostrar la llista de tasques
+                    if (tasks.isEmpty()) {
+                        System.out.println("No hi ha tasques disponibles.");
+                    } else {
+                        System.out.println("Llista de tasques:");
+                        for (int i = 0; i < tasks.size(); i++) {
+                            Task task = tasks.get(i);
+                            System.out.println((i + 1) + ". " + task.getDescription() + 
+                                               " [Completada: " + task.isCompleted() + "]");
+                        }
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Sortint de l'aplicació...");
+                    System.exit(0);
+
+                default:
+                    System.out.println("Opció no vàlida. Torna-ho a provar.");
+            }
+        }
+    }
+}
